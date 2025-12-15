@@ -2,27 +2,19 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Promo IndiHome Unlimited - Pasang Baru</title>
     
-    <!-- SEO & Meta Tags (Penting untuk Share WA & Google) -->
-    <title>Promo IndiHome Unlimited - Daftar Resmi & Cepat</title>
-    <meta name="description" content="Daftar pasang baru IndiHome area Barru, Pangkep, Maros. Proses cepat, resmi, dan mudah via WhatsApp. Cek paket promo terbaru di sini.">
-    <meta name="keywords" content="indihome, pasang indihome, promo indihome, internet murah, wifi rumah, barru, pangkep, maros">
-    <meta name="author" content="DS IndiHome">
+    <!-- Meta Tags -->
+    <meta name="description" content="Internet Andal Tanpa Drama, Pakai IndiHome. Pasang baru area Barru, Pangkep, Maros.">
+    <meta name="theme-color" content="#ec1c24">
 
-    <!-- Open Graph (Tampilan saat share link di WA/FB) -->
-    <meta property="og:title" content="Promo IndiHome Unlimited - Jaringan Tercepat">
-    <meta property="og:description" content="Pasang WiFi IndiHome sekarang! Proses mudah, cukup klik dan isi formulir. Area Barru, Pangkep, Maros.">
-    <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/IndiHome_2023.svg/1200px-IndiHome_2023.svg.png"> <!-- Gambar Thumbnail -->
-    <meta property="og:type" content="website">
-
-    <!-- Favicon (Ikon di Tab Browser) -->
-    <link rel="icon" href="https://www.telkomsel.com/favicon.ico" type="image/x-icon">
-
-    <!-- Google Fonts -->
+    <!-- Fonts & Icons (CDN Cepat Cloudflare) -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- LEAFLET MAPS CSS (CDN Cepat Cloudflare) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
 
     <style>
         /* --- VARIABLES & RESET --- */
@@ -31,336 +23,420 @@
             --dark-red: #b50005;
             --bg-color: #f4f6f8;
             --text-dark: #2d3436;
-            --text-grey: #636e72;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; outline: none; }
+        * { margin: 0; padding: 0; box-sizing: border-box; outline: none; -webkit-tap-highlight-color: transparent; }
 
         body {
             font-family: 'Poppins', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-dark);
             overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
+            line-height: 1.6;
         }
 
         /* --- HERO SECTION --- */
         .hero {
             background: linear-gradient(135deg, var(--primary-red) 0%, var(--dark-red) 100%);
             color: white; text-align: center;
-            padding: 90px 20px 130px 20px;
+            padding: 90px 20px 140px 20px;
             border-radius: 0 0 50px 50px; 
-            margin-bottom: -80px;
+            margin-bottom: -100px;
             box-shadow: 0 10px 30px rgba(181, 0, 5, 0.2);
             position: relative;
-            overflow: hidden;
         }
         
-        /* Efek background halus */
-        .hero::before {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            background-image: radial-gradient(rgba(255,255,255,0.1) 1px, transparent 1px);
-            background-size: 20px 20px; opacity: 0.3; pointer-events: none;
-        }
-
         .hero h1 { 
-            font-size: 2.5rem; font-weight: 800; margin-bottom: 10px; 
-            text-transform: uppercase; letter-spacing: 1px; text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            font-size: clamp(1.8rem, 5vw, 2.8rem); 
+            font-weight: 800; 
+            margin-bottom: 15px; 
+            line-height: 1.2;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
-        .hero p { opacity: 0.95; max-width: 600px; margin: 0 auto; font-weight: 300; }
+        
+        .hero p { 
+            opacity: 0.95; 
+            max-width: 800px;
+            margin: 0 auto; 
+            font-weight: 300; 
+            font-size: 1.05rem; 
+            line-height: 1.6;
+        }
         
         .badge-resmi {
             background: rgba(255,255,255,0.2); padding: 8px 20px; border-radius: 50px;
-            font-size: 0.9rem; display: inline-flex; align-items: center; gap: 8px; margin-top: 20px;
+            font-size: 0.85rem; display: inline-flex; align-items: center; gap: 8px; margin-top: 20px;
             border: 1px solid rgba(255,255,255,0.4); font-weight: 600; backdrop-filter: blur(5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
-        /* --- CONTAINER --- */
+        /* --- CONTAINER (Flexbox Center) --- */
         .container {
-            max-width: 1100px; margin: 0 auto; padding: 0 20px 60px 20px;
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;
+            max-width: 1100px; 
+            margin: 0 auto; 
+            padding: 0 15px 40px 15px;
+            display: flex;
+            flex-wrap: wrap; 
+            justify-content: center; 
+            gap: 25px;
             position: relative; z-index: 10;
         }
 
         /* --- CARD --- */
         .card {
-            background: white; border-radius: 24px; padding: 35px 25px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
-            transition: all 0.3s ease; border: 1px solid rgba(0,0,0,0.05);
+            background: white; border-radius: 20px; padding: 30px 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.05);
+            flex: 1 1 300px; 
+            max-width: 350px; 
+            width: 100%;
             display: flex; flex-direction: column; position: relative; overflow: hidden;
+            transition: transform 0.3s ease;
         }
-        .card:hover { transform: translateY(-10px); box-shadow: 0 25px 50px rgba(236, 28, 36, 0.15); border-color: rgba(236, 28, 36, 0.2); }
+        
+        @media(hover: hover) { .card:hover { transform: translateY(-5px); } }
         
         .popular-tag {
             position: absolute; top: 15px; right: 15px;
             background: linear-gradient(45deg, #ff9f43, #ff6b6b); color: white;
-            padding: 5px 15px; border-radius: 20px; font-size: 0.75rem; font-weight: 700;
-            box-shadow: 0 4px 10px rgba(255, 107, 107, 0.3);
+            padding: 4px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: 700;
+            box-shadow: 0 4px 10px rgba(255, 107, 107, 0.3); z-index: 2;
         }
 
-        .speed-section { text-align: center; margin-bottom: 20px; border-bottom: 2px dashed #f1f2f6; padding-bottom: 20px; }
-        .speed-number { font-size: 3.5rem; font-weight: 800; color: var(--primary-red); line-height: 1; }
-        .speed-unit { font-size: 1.2rem; font-weight: 600; color: #636e72; }
+        .speed-section { text-align: center; margin-bottom: 15px; border-bottom: 2px dashed #f1f2f6; padding-bottom: 15px; }
+        .speed-number { font-size: 3rem; font-weight: 800; color: var(--primary-red); line-height: 1; }
+        .speed-unit { font-size: 1rem; font-weight: 600; color: #636e72; }
 
-        .price-section { text-align: center; margin-bottom: 25px; }
-        .price-amount { font-size: 2.2rem; font-weight: 800; color: var(--text-dark); }
-        .price-currency { font-size: 1.2rem; color: #636e72; font-weight: 500; vertical-align: top;}
-        .price-period { font-size: 0.9rem; color: #999; }
+        .price-section { text-align: center; margin-bottom: 20px; }
+        .price-amount { font-size: 1.8rem; font-weight: 800; color: var(--text-dark); }
+        .price-currency { font-size: 1rem; color: #636e72; font-weight: 500; vertical-align: top;}
+        .price-period { font-size: 0.8rem; color: #999; }
 
-        .features { flex-grow: 1; margin-bottom: 30px; text-align: center; }
-        .feature-label { font-size: 0.85rem; font-weight: 600; margin-bottom: 12px; color: #555; }
-        .app-grid { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; }
-        .app-badge { font-size: 0.8rem; padding: 6px 12px; border-radius: 8px; background: #f8f9fa; border: 1px solid #eee; font-weight: 600; color: #555; }
+        .features { flex-grow: 1; margin-bottom: 25px; text-align: center; }
         
-        .app-netflix { background: #000; color: #e50914; border:none; }
-        .app-prime { background: #00A8E1; color: white; border:none; }
-        .app-catchplay { background: #e67e22; color: white; border:none; }
-        .app-indihome { background: var(--primary-red); color: white; border:none; }
+        /* Style untuk Ideal Perangkat */
+        .device-info {
+            font-size: 0.85rem;
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 15px;
+            background: #e3f2fd; /* Biru Muda */
+            padding: 8px;
+            border-radius: 8px;
+            border: 1px solid #bbdefb;
+        }
+        .device-info i { color: #1e88e5; margin-right: 5px; }
         
         .psb-note { 
-            font-size: 0.8rem; color: #888; margin-top: 15px; 
-            background: #fff5f5; padding: 8px 12px; border-radius: 8px; display: inline-block; 
+            font-size: 0.8rem; color: #888; margin-top: 5px; 
+            background: #f1f2f6; padding: 6px 10px; border-radius: 6px; display: inline-block; 
         }
 
-        /* --- BUTTON --- */
         .btn-cta {
             background: linear-gradient(135deg, #ec1c24 0%, #b30000 100%);
-            color: white; padding: 15px; border-radius: 15px; font-weight: 700;
-            text-align: center; cursor: pointer; transition: all 0.3s;
-            display: flex; justify-content: center; align-items: center; gap: 10px;
-            box-shadow: 0 8px 20px rgba(236, 28, 36, 0.25); border: none; width: 100%; font-size: 1rem;
+            color: white; padding: 14px; border-radius: 12px; font-weight: 700;
+            text-align: center; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 8px;
+            box-shadow: 0 5px 15px rgba(236, 28, 36, 0.2); border: none; width: 100%; font-size: 0.95rem;
+            transition: 0.2s;
         }
-        .btn-cta:hover { transform: translateY(-3px); box-shadow: 0 12px 25px rgba(236, 28, 36, 0.4); }
+        .btn-cta:active { transform: scale(0.98); }
+
+        /* --- INFO STEPS SECTION --- */
+        .info-section {
+            max-width: 900px; margin: 0 auto 50px auto; padding: 30px 20px;
+            background: white; border-radius: 20px; box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+        .info-title {
+            text-align: center; font-size: 1.5rem; color: var(--primary-red);
+            margin-bottom: 30px; font-weight: 700;
+        }
+        .step-item {
+            display: flex; gap: 20px; margin-bottom: 25px; align-items: flex-start;
+        }
+        .step-number {
+            background: var(--primary-red); color: white; width: 35px; height: 35px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-weight: bold; flex-shrink: 0; margin-top: 5px;
+        }
+        .step-content h3 { font-size: 1.1rem; margin-bottom: 5px; color: #333; }
+        .step-content p { font-size: 0.9rem; color: #666; margin: 0; }
+        
+        .payment-box {
+            background: #e3f2fd; border-left: 5px solid #2196f3;
+            padding: 15px 20px; border-radius: 8px; margin-top: 30px; margin-bottom: 30px;
+        }
+        .payment-box h4 { color: #1565c0; margin-bottom: 5px; font-size: 1rem; }
+        .payment-box p { font-size: 0.9rem; color: #555; }
+
+        /* --- SYARAT & KETENTUAN BOX --- */
+        .tnc-box {
+            background: #fff5f5; border: 1px dashed var(--primary-red);
+            padding: 20px; border-radius: 12px; margin-top: 30px;
+        }
+        .tnc-box h4 { color: #b50005; font-size: 1rem; margin-bottom: 10px; }
+        .tnc-box ul { padding-left: 20px; margin: 0; }
+        .tnc-box li { font-size: 0.85rem; color: #555; margin-bottom: 8px; }
+        .tnc-box strong { color: #333; }
+
+        .coverage-img-container {
+            text-align: center; margin-top: 30px;
+        }
+        .coverage-img-container img {
+            max-width: 100%; height: auto; border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
 
         /* --- MODAL POPUP --- */
         .modal {
             display: none; position: fixed; z-index: 2000; left: 0; top: 0;
             width: 100%; height: 100%; background-color: rgba(0,0,0,0.6);
-            backdrop-filter: blur(8px); overflow-y: auto;
+            backdrop-filter: blur(5px); overflow-y: auto; 
+            -webkit-overflow-scrolling: touch;
         }
         .modal-content {
-            background-color: white; margin: 5% auto; padding: 40px;
-            border-radius: 24px; width: 90%; max-width: 500px;
-            position: relative; animation: slideDown 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+            background-color: white; margin: 20px auto; padding: 25px;
+            border-radius: 20px; width: 95%; max-width: 500px;
+            position: relative; animation: slideUp 0.3s ease-out;
         }
-        @keyframes slideDown { from {top: -50px; opacity: 0;} to {top: 0; opacity: 1;} }
-        
+        @keyframes slideUp { from {transform: translateY(50px); opacity: 0;} to {transform: translateY(0); opacity: 1;} }
         .close-btn {
-            position: absolute; top: 20px; right: 25px; font-size: 24px;
-            color: #ccc; cursor: pointer; transition: 0.2s;
+            position: absolute; top: 15px; right: 20px; font-size: 28px;
+            color: #ccc; cursor: pointer; padding: 5px; line-height: 1; z-index: 5;
         }
-        .close-btn:hover { color: var(--primary-red); }
-
-        .form-header { text-align: center; margin-bottom: 25px; }
-        .form-header h2 { color: var(--primary-red); font-size: 1.5rem; margin-bottom: 5px; }
-        .form-header p { color: #666; font-size: 0.9rem; }
-
-        .form-group { margin-bottom: 18px; }
-        .form-group label { display: block; margin-bottom: 6px; font-weight: 600; font-size: 0.9rem; color: #444; }
         
+        .form-group { margin-bottom: 15px; text-align: left; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: 600; font-size: 0.85rem; color: #444; }
         .form-group input, .form-group textarea {
-            width: 100%; padding: 12px 15px; border: 1px solid #e0e0e0; border-radius: 12px;
-            font-family: 'Poppins', sans-serif; font-size: 0.95rem; transition: 0.3s;
-            background: #f9f9f9;
-        }
-        .form-group input:focus, .form-group textarea:focus { 
-            border-color: var(--primary-red); background: white; box-shadow: 0 0 0 4px rgba(236,28,36,0.1); 
+            width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 10px;
+            font-family: 'Poppins', sans-serif; font-size: 16px; background: #f9f9f9;
         }
 
-        .input-group-maps { display: flex; gap: 10px; }
-        .btn-maps {
-            background-color: #3498db; color: white; border: none; border-radius: 12px;
-            padding: 0 18px; cursor: pointer; font-size: 1.2rem; transition: 0.2s;
+        #paket {
+            background-color: #e9ecef; cursor: not-allowed; color: var(--primary-red); font-weight: 700;
         }
-        .btn-maps:hover { background-color: #2980b9; }
 
-        /* --- FOOTER & WA --- */
+        /* --- MAP STYLING --- */
+        #map-container { width: 100%; height: 250px; border-radius: 12px; margin-bottom: 10px; z-index: 1; }
+        .btn-detect {
+            width: 100%; background: #3498db; color: white; border: none; padding: 10px;
+            border-radius: 8px; margin-bottom: 10px; cursor: pointer;
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+        }
+
         .footer-note { 
-            text-align: center; padding: 50px 20px; color: #636e72; 
-            font-size: 0.9rem; background: white; line-height: 1.6; border-top: 1px solid #eee;
+            text-align: center; padding: 30px 20px 90px 20px; 
+            color: #636e72; font-size: 0.8rem; background: white; border-top: 1px solid #eee;
         }
         
-        .float-wa {
-            position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white;
-            width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            font-size: 30px; z-index: 999; text-decoration: none; 
-            box-shadow: 0 10px 25px rgba(37,211,102,0.4); transition: 0.3s;
+        /* --- FLOATING BUTTONS (WA & PAY) --- */
+        .float-container {
+            position: fixed; bottom: 25px; right: 25px; z-index: 999;
+            display: flex; flex-direction: column; gap: 15px; align-items: flex-end;
         }
-        .float-wa:hover { transform: scale(1.1) rotate(10deg); }
 
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 1.8rem; }
-            .modal-content { margin: 15% auto; width: 95%; padding: 25px; }
-            .container { gap: 20px; }
+        .float-btn {
+            width: 55px; height: 55px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 26px; text-decoration: none; color: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2); transition: transform 0.3s;
+            position: relative;
         }
+
+        .float-btn:hover { transform: scale(1.1); }
+        
+        .float-wa { background: #25d366; }
+        .float-pay { background: #0984e3; }
+
+        /* Tooltip Text */
+        .float-tooltip {
+            position: absolute; right: 65px; top: 50%; transform: translateY(-50%);
+            background: #333; color: white; padding: 5px 12px;
+            border-radius: 6px; font-size: 0.75rem; white-space: nowrap;
+            opacity: 0; transition: 0.3s; pointer-events: none;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .float-btn:hover .float-tooltip { opacity: 1; right: 70px; }
+
     </style>
 </head>
 <body>
 
     <!-- HERO SECTION -->
     <div class="hero">
-        <h1>Promo IndiHome Unlimited</h1>
-        <p>Internet Fiber Optik Tercepat & Stabil untuk Rumah Anda</p>
-        <div class="badge-resmi"><i class="fas fa-shield-alt"></i> 100% Sales Resmi</div>
+        <h1>Internet Andal Tanpa Drama,<br>Pakai IndiHome</h1>
+        <p>Lancarkan kebutuhan aktivitas online di berbagai kondisi cuaca dengan jaringan fiber optik IndiHome. Yuk, pilih paket dengan beragam penawaran terbaik!</p>
+        <div class="badge-resmi"><i class="fas fa-check-circle"></i> Sales Resmi Telkom</div>
     </div>
 
+    <!-- PAKET HARGA -->
     <div class="container">
         <!-- PAKET 20 Mbps -->
         <div class="card">
             <div class="speed-section"><div class="speed-number">20</div><div class="speed-unit">Mbps</div></div>
-            <div class="price-section">
-                <span class="price-currency">Rp</span><span class="price-amount">190.000</span>
-                <div class="price-period">/ bulan</div>
-            </div>
+            <div class="price-section"><span class="price-currency">Rp</span><span class="price-amount">220.000</span><div class="price-period">/ bulan</div></div>
             <div class="features">
-                <div class="feature-label">Termasuk Aplikasi:</div>
-                <div class="app-grid"><span class="app-badge app-indihome">IndiHome TV</span></div>
-                <div class="psb-note">Biaya Pasang: Rp 99.000</div>
+                <div class="device-info"><i class="fas fa-laptop-house"></i> Ideal: 2-3 Perangkat</div>
+                <div class="psb-note">Pasang: Rp 99.000</div>
             </div>
-            <button onclick="openModal('Paket 20 Mbps - Rp 190.000')" class="btn-cta">
-                <i class="fas fa-file-signature"></i> Isi Formulir
-            </button>
+            <button onclick="openModal('20 Mbps - Rp 220.000')" class="btn-cta">Pilih Paket</button>
         </div>
 
         <!-- PAKET 50 Mbps -->
         <div class="card">
-            <div class="popular-tag"><i class="fas fa-bolt"></i> TERLARIS</div>
+            <div class="popular-tag">TERLARIS</div>
             <div class="speed-section"><div class="speed-number">50</div><div class="speed-unit">Mbps</div></div>
-            <div class="price-section">
-                <span class="price-currency">Rp</span><span class="price-amount">240.000</span>
-                <div class="price-period">/ bulan</div>
-            </div>
+            <div class="price-section"><span class="price-currency">Rp</span><span class="price-amount">240.000</span><div class="price-period">/ bulan</div></div>
             <div class="features">
-                <div class="feature-label">Termasuk Aplikasi:</div>
-                <div class="app-grid">
-                    <span class="app-badge app-catchplay">Catchplay+</span>
-                    <span class="app-badge app-indihome">TV</span>
-                    <span class="app-badge app-prime">Prime</span>
-                </div>
-                <div class="psb-note">Biaya Pasang: Rp 99.000</div>
+                <div class="device-info"><i class="fas fa-laptop-house"></i> Ideal: 3-5 Perangkat</div>
+                <div class="psb-note">Pasang: Rp 99.000</div>
             </div>
-            <button onclick="openModal('Paket 50 Mbps - Rp 240.000')" class="btn-cta">
-                <i class="fas fa-file-signature"></i> Isi Formulir
-            </button>
+            <button onclick="openModal('50 Mbps - Rp 240.000')" class="btn-cta">Pilih Paket</button>
         </div>
 
         <!-- PAKET 75 Mbps -->
         <div class="card">
             <div class="speed-section"><div class="speed-number">75</div><div class="speed-unit">Mbps</div></div>
-            <div class="price-section">
-                <span class="price-currency">Rp</span><span class="price-amount">270.000</span>
-                <div class="price-period">/ bulan</div>
-            </div>
+            <div class="price-section"><span class="price-currency">Rp</span><span class="price-amount">270.000</span><div class="price-period">/ bulan</div></div>
             <div class="features">
-                <div class="feature-label">Termasuk Aplikasi:</div>
-                <div class="app-grid">
-                    <span class="app-badge app-catchplay">Catchplay+</span>
-                    <span class="app-badge app-prime">Prime</span>
-                </div>
-                <div class="psb-note">Biaya Pasang: Rp 99.000</div>
+                <div class="device-info"><i class="fas fa-laptop-house"></i> Ideal: 5-7 Perangkat</div>
+                <div class="psb-note">Pasang: Rp 99.000</div>
             </div>
-            <button onclick="openModal('Paket 75 Mbps - Rp 270.000')" class="btn-cta">
-                <i class="fas fa-file-signature"></i> Isi Formulir
-            </button>
-        </div>
-
-        <!-- PAKET 150 Mbps -->
-        <div class="card">
-            <div class="speed-section"><div class="speed-number">150</div><div class="speed-unit">Mbps</div></div>
-            <div class="price-section">
-                <span class="price-currency">Rp</span><span class="price-amount">375.000</span>
-                <div class="price-period">/ bulan</div>
-            </div>
-            <div class="features">
-                <div class="feature-label">Termasuk Aplikasi:</div>
-                <div class="app-grid">
-                    <span class="app-badge app-catchplay">Catchplay+</span>
-                    <span class="app-badge app-prime">Prime</span>
-                </div>
-                <div class="psb-note">Biaya Pasang: Rp 99.000</div>
-            </div>
-            <button onclick="openModal('Paket 150 Mbps - Rp 375.000')" class="btn-cta">
-                <i class="fas fa-file-signature"></i> Isi Formulir
-            </button>
+            <button onclick="openModal('75 Mbps - Rp 270.000')" class="btn-cta">Pilih Paket</button>
         </div>
         
-         <!-- PAKET 200 Mbps -->
-         <div class="card" style="border: 2px solid #ffe0e0;">
-            <div class="speed-section"><div class="speed-number">200</div><div class="speed-unit">Mbps</div></div>
-            <div class="price-section">
-                <span class="price-currency">Rp</span><span class="price-amount">515.000</span>
-                <div class="price-period">/ bulan</div>
-            </div>
+        <!-- PAKET 100 Mbps -->
+        <div class="card">
+            <div class="speed-section"><div class="speed-number">100</div><div class="speed-unit">Mbps</div></div>
+            <div class="price-section"><span class="price-currency">Rp</span><span class="price-amount">375.000</span><div class="price-period">/ bulan</div></div>
             <div class="features">
-                <div class="feature-label">Termasuk Aplikasi:</div>
-                <div class="app-grid">
-                    <span class="app-badge app-catchplay">Catchplay+</span>
-                    <span class="app-badge app-netflix">Netflix</span>
-                </div>
-                <div class="psb-note">Biaya Pasang: Rp 99.000</div>
+                <div class="device-info"><i class="fas fa-laptop-house"></i> Ideal: 7-10 Perangkat</div>
+                <div class="psb-note">Pasang: Rp 99.000</div>
             </div>
-            <button onclick="openModal('Paket 200 Mbps - Rp 515.000')" class="btn-cta">
-                <i class="fas fa-file-signature"></i> Isi Formulir
-            </button>
+            <button onclick="openModal('100 Mbps - Rp 375.000')" class="btn-cta">Pilih Paket</button>
+        </div>
+
+        <!-- PAKET 200 Mbps -->
+        <div class="card" style="border: 2px solid #ffe0e0;">
+            <div class="speed-section"><div class="speed-number">200</div><div class="speed-unit">Mbps</div></div>
+            <div class="price-section"><span class="price-currency">Rp</span><span class="price-amount">515.000</span><div class="price-period">/ bulan</div></div>
+            <div class="features">
+                <div class="device-info"><i class="fas fa-laptop-house"></i> Ideal: 15-20 Perangkat</div>
+                <div class="psb-note">Pasang: Rp 99.000</div>
+            </div>
+            <button onclick="openModal('200 Mbps - Rp 515.000')" class="btn-cta">Pilih Paket</button>
         </div>
     </div>
 
-    <!-- MODAL POPUP FORMULIR -->
+    <!-- BAGIAN INFORMASI PEMASANGAN & SYARAT -->
+    <section class="info-section">
+        <h2 class="info-title">Proses Pemasangan Mudah</h2>
+        
+        <div class="step-item">
+            <div class="step-number">1</div>
+            <div class="step-content">
+                <h3>Cek Ketersediaan Jaringan</h3>
+                <p>Pastikan wilayah Anda ter-cover jaringan. Cara cek-nya sangat mudah dengan chat WhatsApp ke tim marketing kami dan mengirim <strong>Share Location</strong> tempat pemasangan Anda.</p>
+            </div>
+        </div>
+
+        <div class="step-item">
+            <div class="step-number">2</div>
+            <div class="step-content">
+                <h3>Pilih Paket</h3>
+                <p>Anda dapat mengonsultasikan paket apa yang paling sesuai dengan kebutuhan Anda kepada tim marketing kami.</p>
+            </div>
+        </div>
+
+        <div class="step-item">
+            <div class="step-number">3</div>
+            <div class="step-content">
+                <h3>Isi Form & Verifikasi</h3>
+                <p>Isi Form Pemasangan via WhatsApp. Tim inputer akan memproses data pengajuan dan akan segera menghubungi Anda atau tim pusat konfirmasi jadwal kedatangan teknisi.</p>
+            </div>
+        </div>
+
+        <div class="step-item">
+            <div class="step-number">4</div>
+            <div class="step-content">
+                <h3>Instalasi Teknisi</h3>
+                <p>Tunggu teknisi yang akan datang ke lokasi dan melakukan instalasi hingga IndiHome terpasang aktif.</p>
+            </div>
+        </div>
+
+        <!-- Info Pembayaran -->
+        <div class="payment-box">
+            <h4><i class="fas fa-file-invoice-dollar"></i> Informasi Pembayaran</h4>
+            <p>Pembayaraan tagihan menggunakan <strong>Nomor Internet</strong> yang diberikan oleh teknisi (tertera di ONT/Modem) atau Anda bisa meminta ke tim kami untuk mengetahui nomor internet Anda.</p>
+        </div>
+
+        <!-- Syarat & Ketentuan -->
+        <div class="tnc-box">
+            <h4><i class="fas fa-exclamation-circle"></i> Syarat dan Ketentuan Berlaku:</h4>
+            <ul>
+                <li>Harga paket adalah harga untuk pembayaran setiap bulannya.</li>
+                <li>Harga belum termasuk PPN 11%.</li>
+                <li>Biaya pemasangan tinggal <strong>Rp 99.000</strong> (Sudah terdiskon 80% dari harga awal Rp 500.000).</li>
+                <li>Peralatan (Modem/ONT) sudah disediakan oleh pihak perusahaan.</li>
+            </ul>
+        </div>
+
+        <!-- Gambar Peta -->
+        <div class="coverage-img-container">
+            <img src="peta-jaringan.png" 
+                 alt="Peta Jaringan IndiHome"
+                 onerror="this.src='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjP_TETyVv9jJz5ZJ5_YJz5ZJ5_YJz5ZJ5_YJz5ZJ5_YJz5ZJ5/s1600/indihome-coverage.png'">
+            <p style="font-size:0.8rem; color:#888; margin-top:5px;">IndiHome tersedia hingga pelosok negeri.</p>
+        </div>
+    </section>
+
+    <!-- MODAL FORMULIR -->
     <div id="registrationModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal()">&times;</span>
-            <div class="form-header">
-                <h2>Formulir Pendaftaran</h2>
-                <p>Lengkapi data untuk pengecekan jaringan (ODP)</p>
+            <div style="text-align:center; margin-bottom:15px;">
+                <h2 style="color:var(--primary-red); font-size:1.3rem;">Formulir Pendaftaran</h2>
+                <p style="font-size:0.8rem; color:#666;">Lengkapi data untuk pengecekan ODP</p>
             </div>
 
             <form id="indihomeForm" onsubmit="sendToWhatsapp(event)">
                 
                 <div class="form-group">
                     <label>Paket Pilihan:</label>
-                    <input type="text" id="paket" readonly style="background:#e9ecef; color:#495057; font-weight:600; cursor:not-allowed;">
-                </div>
-
-                <div class="form-group">
-                    <label>Nama Lengkap:</label>
-                    <input type="text" id="nama" placeholder="Sesuai KTP" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Alamat Email:</label>
-                    <input type="email" id="email" placeholder="nama@email.com" required>
-                </div>
-
-                <div class="form-group">
-                    <label>No. HP / WhatsApp (Aktif):</label>
-                    <input type="number" id="nohp" placeholder="Contoh: 0812..." required>
-                </div>
-
-                <div class="form-group">
-                    <label>No. Alternatif (Opsional):</label>
-                    <input type="number" id="noalt" placeholder="Nomor keluarga lainnya">
-                </div>
-
-                <div class="form-group">
-                    <label>Alamat Pemasangan Lengkap:</label>
-                    <textarea id="alamat" rows="3" placeholder="Nama Jalan, No. Rumah, RT/RW, Kelurahan, Kecamatan" required></textarea>
+                    <input type="text" id="paket" readonly>
                 </div>
                 
                 <div class="form-group">
-                    <label>Share Location (Google Maps):</label>
-                    <div class="input-group-maps">
-                        <input type="text" id="lokasi" placeholder="Link Maps akan muncul di sini...">
-                        <button type="button" class="btn-maps" onclick="getLocation()" title="Ambil Lokasi Saya">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </button>
-                    </div>
-                    <small style="color:#888; font-size:0.75rem; margin-top:5px; display:block;">*Klik tombol biru untuk otomatis isi lokasi.</small>
+                    <label>Nama Lengkap (KTP):</label>
+                    <input type="text" id="nama" required placeholder="Nama Lengkap">
+                </div>
+                
+                <div class="form-group">
+                    <label>Alamat Email:</label>
+                    <input type="email" id="email" placeholder="Contoh: nama@gmail.com">
+                </div>
+
+                <div class="form-group">
+                    <label>No. WhatsApp Aktif:</label>
+                    <input type="tel" id="nohp" required placeholder="08xxx" pattern="[0-9]*" inputmode="numeric">
+                </div>
+
+                <div class="form-group">
+                    <label>Alamat Lengkap:</label>
+                    <textarea id="alamat" rows="2" placeholder="Nama Jalan, Blok, Nomor Rumah, RT/RW" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Titik Lokasi Rumah (Wajib):</label>
+                    <button type="button" class="btn-detect" onclick="detectLocation()">
+                        <i class="fas fa-crosshairs"></i> Deteksi Lokasi Saya
+                    </button>
+                    <div id="map-container"></div>
+                    <input type="text" id="lokasi_koordinat" readonly style="font-size:0.75rem; color:#666; background:#eee; margin-top:5px;" placeholder="Koordinat akan muncul disini...">
                 </div>
 
                 <button type="submit" class="btn-cta" style="margin-top: 20px;">
-                    <i class="fab fa-whatsapp"></i> KIRIM DATA SEKARANG
+                    <i class="fab fa-whatsapp"></i> KIRIM DATA
                 </button>
             </form>
         </div>
@@ -368,91 +444,103 @@
 
     <!-- FOOTER -->
     <div class="footer-note">
-        <p>Harga belum termasuk PPN 11%. Syarat & Ketentuan berlaku.<br>
-        <strong>DS INDIHOME Barru, Pangkep, Maros</strong></p>
+        <p>Harga belum termasuk PPN 11%.<br><strong>DS INDIHOME MITRA RESMI</strong></p>
     </div>
 
-    <!-- Floating WhatsApp -->
-    <a href="https://wa.me/6285148453998" class="float-wa" target="_blank" aria-label="Chat WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    <!-- Floating Buttons Container -->
+    <div class="float-container">
+        <!-- Tombol Bayar -->
+        <a href="https://live.finpay.id/widgetpg/001001" class="float-btn float-pay" target="_blank">
+            <i class="fas fa-file-invoice-dollar"></i>
+            <span class="float-tooltip">Bayar Tagihan</span>
+        </a>
+        
+        <!-- Tombol WA -->
+        <a href="https://wa.me/6285148453998" class="float-btn float-wa">
+            <i class="fab fa-whatsapp"></i>
+            <span class="float-tooltip">Chat Admin</span>
+        </a>
+    </div>
 
-    <!-- JAVASCRIPT -->
+    <!-- LEAFLET JS (CDN Cepat Cloudflare) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+
     <script>
+        // --- LOGIKA PETA ---
+        let map; let marker;
+
+        function initMap() {
+            const defaultLat = -5.147665; const defaultLng = 119.432731;
+            if (!map) {
+                map = L.map('map-container').setView([defaultLat, defaultLng], 13);
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© OpenStreetMap' }).addTo(map);
+                marker = L.marker([defaultLat, defaultLng], {draggable: true}).addTo(map);
+                marker.on('dragend', function(event) {
+                    var position = marker.getLatLng();
+                    updateInputLocation(position.lat, position.lng);
+                });
+            }
+        }
+
+        function detectLocation() {
+            var btn = document.querySelector(".btn-detect");
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sedang Mencari...';
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    const lat = position.coords.latitude; const lng = position.coords.longitude;
+                    map.setView([lat, lng], 18); marker.setLatLng([lat, lng]);
+                    updateInputLocation(lat, lng);
+                    btn.innerHTML = '<i class="fas fa-check"></i> Lokasi Ditemukan';
+                    btn.style.background = "#27ae60";
+                }, function() {
+                    alert("Gagal. Pastikan GPS aktif."); btn.innerHTML = 'Coba Lagi';
+                }, { enableHighAccuracy: true });
+            } else { alert("Browser tidak mendukung GPS."); }
+        }
+
+        function updateInputLocation(lat, lng) {
+            document.getElementById('lokasi_koordinat').value = `https://www.google.com/maps?q=${lat},${lng}`;
+        }
+
+        // --- MODAL ---
         function openModal(namaPaket) {
             document.getElementById('paket').value = namaPaket;
             document.getElementById('registrationModal').style.display = 'block';
-            document.body.style.overflow = 'hidden'; // Kunci scroll belakang
+            document.body.style.overflow = 'hidden';
+            setTimeout(function() { initMap(); map.invalidateSize(); }, 300);
         }
 
         function closeModal() {
             document.getElementById('registrationModal').style.display = 'none';
-            document.body.style.overflow = 'auto'; // Buka scroll
+            document.body.style.overflow = 'auto';
         }
 
-        window.onclick = function(event) {
-            var modal = document.getElementById('registrationModal');
-            if (event.target == modal) {
-                closeModal();
-            }
-        }
+        window.onclick = function(event) { if (event.target == document.getElementById('registrationModal')) closeModal(); }
 
-        function getLocation() {
-            var inputLokasi = document.getElementById("lokasi");
-            if (navigator.geolocation) {
-                inputLokasi.value = "Mengambil lokasi...";
-                inputLokasi.placeholder = "Sedang memproses...";
-                navigator.geolocation.getCurrentPosition(showPosition, showError);
-            } else {
-                alert("Browser tidak mendukung Geolocation.");
-            }
-        }
-
-        function showPosition(position) {
-            var lat = position.coords.latitude;
-            var long = position.coords.longitude;
-            var inputLokasi = document.getElementById("lokasi");
-            // Membuat link Google Maps
-            var mapsLink = "https://www.google.com/maps?q=" + lat + "," + long;
-            inputLokasi.value = mapsLink;
-        }
-
-        function showError(error) {
-            var inputLokasi = document.getElementById("lokasi");
-            inputLokasi.value = "";
-            alert("Gagal mengambil lokasi. Pastikan GPS aktif dan izinkan akses lokasi.");
-        }
-
+        // --- WA ---
         function sendToWhatsapp(e) {
             e.preventDefault();
-
-            // Ambil Value
             var paket = document.getElementById('paket').value;
             var nama = document.getElementById('nama').value;
             var email = document.getElementById('email').value;
             var nohp = document.getElementById('nohp').value;
-            var noalt = document.getElementById('noalt').value;
             var alamat = document.getElementById('alamat').value;
-            var lokasi = document.getElementById('lokasi').value;
+            var koordinat = document.getElementById('lokasi_koordinat').value;
+
+            if(koordinat == "") { alert("Mohon klik tombol 'Deteksi Lokasi' atau geser map manual."); return; }
             
-            var nomorWA = "6282271337272"; 
-
-            // Format Pesan Rapi
-            var pesan = `*FORMULIR PENDAFTARAN INDIHOME*%0A` +
-                        `%0A` +
-                        `📦 *Paket:* ${paket}%0A` +
-                        `👤 *Nama:* ${nama}%0A` +
-                        `📧 *Email:* ${email ? email : '-' }%0A` +
-                        `📱 *No. HP/WA:* ${nohp}%0A` +
-                        `📞 *No. Alternatif:* ${noalt ? noalt : '-' }%0A` +
-                        `🏠 *Alamat:* ${alamat}%0A` +
-                        `📍 *Lokasi Maps:* ${lokasi ? lokasi : '(Belum diisi)'}%0A` +
-                        `%0A` +
-                        `--------------------------------%0A` +
-                        `Mohon dibantu proses registrasi. Saya menyetujui kontrak berlangganan minimal 1 Tahun. Terima kasih.`;
-
-            var link = `https://wa.me/${nomorWA}?text=${pesan}`;
-            window.open(link, '_blank');
+            var text = `*REGISTRASI INDIHOME BARU*%0A` +
+                       `--------------------------------%0A` +
+                       `📦 Paket: ${paket}%0A` +
+                       `👤 Nama: ${nama}%0A` +
+                       `📧 Email: ${email ? email : '-' }%0A` +
+                       `📱 WA: ${nohp}%0A` +
+                       `🏠 Alamat: ${alamat}%0A` +
+                       `📍 Maps: ${koordinat}%0A` +
+                       `--------------------------------%0A` +
+                       `Mohon dicek ketersediaan jaringan.`;
+                       
+            window.open(`https://wa.me/6285148453998?text=${text}`, '_blank');
         }
     </script>
 </body>
